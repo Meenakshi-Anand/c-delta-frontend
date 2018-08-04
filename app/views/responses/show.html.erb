@@ -19,33 +19,24 @@
         <div>
         <div>
         <strong> Purpose </strong>
-        <% raw_score,max_score = 0,0 %>
-        <% @response.question_responses.select{|el| raw_score += el.question_choice.score if el.question_choice.creative_quality.name === "Purpose"} %>
-        <% @response.question_responses.select{|el| max_score += el.question.question_choices.max{|el| el.score}.score if el.question_choice.creative_quality.name === "Purpose"} %>
         <ul>
-        <li> Raw score : <%= raw_score %> </li>
-        <li> Max score : <%= max_score %> </li>
+        <li> Raw score : <%= @response.raw_score("Purpose") %> </li>
+        <li> Max score : <%= @response.max_score("Purpose") %> </li>
         </ul>
         </div>
-      </div>
+        </div>
         <div>
         <strong> Empowerment </strong>
-        <% raw_score,max_score = 0,0 %>
-        <% @response.question_responses.select{|el| raw_score += el.question_choice.score if el.question_choice.creative_quality.name === "Empowerment"} %>
-        <% @response.question_responses.select{|el| max_score += el.question.question_choices.max{|el| el.score}.score if el.question_choice.creative_quality.name === "Empowerment"} %>
         <ul>
-        <li> Raw score : <%= raw_score %>  </li>
-        <li> Max score : <%= max_score %> </li>
+        <li> Raw score : <%= @response.raw_score("Empowerment") %>  </li>
+        <li> Max score : <%= @response.max_score("Empowerment") %> </li>
         </ul>
         </div>
         <div>
         <strong> Collaboration </strong>
-        <% raw_score,max_score = 0,0 %>
-        <% @response.question_responses.select{|el| raw_score += el.question_choice.score if el.question_choice.creative_quality.name === "Collaboration"} %>
-        <% @response.question_responses.select{|el| max_score += el.question.question_choices.max{|el| el.score}.score if el.question_choice.creative_quality.name === "Collaboration"} %>
         <ul>
-        <li> Raw score : <%= raw_score %> </li>
-        <li> Max score : <%= max_score %> </li>
+        <li> Raw score : <%= @response.raw_score("Collaboration") %> </li>
+        <li> Max score : <%= @response.max_score("Collaboration") %> </li>
         </ul>
         </div>
       </div>

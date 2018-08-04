@@ -14,6 +14,19 @@ class Response < ApplicationRecord
     question_responses_count == Question.count
   end
 
-  
+  def raw_score (creative_quality)
+    raw_score = 0
+    self.question_responses
+    .select{|el| raw_score += el.question_choice.score if el.question_choice.creative_quality.name === creative_quality}
+    raw_score
+  end
+
+  def max_score(creative_quality)
+    max_score = 0
+    self.question_responses
+    .select{|el| max_score += el.question.question_choices.max{|el| el.score}.score if el.question_choice.creative_quality.name === creative_quality}
+    max_score
+  end
+
 
 end
