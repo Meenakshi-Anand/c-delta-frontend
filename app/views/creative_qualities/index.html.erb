@@ -27,14 +27,16 @@
             </div>
 
             <div class="panel-body">
+
               <p>
                 <%= creative_quality.description %>
               </p>
-
+              <% score = (creative_quality.raw_score.to_f / creative_quality.max_score * 100).round %>
+              <% score = score.floor if score > 100 %>
+              <% score = score.ceil if score < -100 %>
               <hr>
-
               <p>
-                <strong>Your Score: _______</strong>
+                <strong>Your Score: <%= score%></strong>
               </p>
             </div>
           </div>
