@@ -31,6 +31,7 @@
               <p>
                 <%= creative_quality.description %>
               </p>
+              <%# code for section 1.3 Scoring Creative Qualities globally %>
               <% score = (creative_quality.raw_score.to_f / creative_quality.max_score * 100).round %>
               <% score = score.floor if score > 100 %>
               <% score = score.ceil if score < -100 %>

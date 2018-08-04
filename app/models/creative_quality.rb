@@ -3,7 +3,8 @@ class CreativeQuality < ApplicationRecord
   has_many :question_choices
 
   validates :name, :description, :color, presence: true
-
+  
+  #finds the cumulative raw score
   def raw_score
     raw_score = 0
     Response.all.each do |response|
@@ -13,6 +14,7 @@ class CreativeQuality < ApplicationRecord
     raw_score
   end
 
+ #finds the cummulative max score
   def max_score
     max_score = 0
     Response.all.each do |response|

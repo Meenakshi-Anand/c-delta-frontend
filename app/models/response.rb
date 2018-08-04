@@ -14,13 +14,15 @@ class Response < ApplicationRecord
     question_responses_count == Question.count
   end
 
+  # finds the raw score set of responses based on the creative_quality
   def raw_score (creative_quality)
     raw_score = 0
     self.question_responses
     .select{|el| raw_score += el.question_choice.score if el.question_choice.creative_quality.name === creative_quality}
     raw_score
   end
-
+  
+  # finds the max score set of responses based on the creative_quality
   def max_score(creative_quality)
     max_score = 0
     self.question_responses
