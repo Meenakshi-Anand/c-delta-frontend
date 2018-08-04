@@ -13,4 +13,7 @@ class Response < ApplicationRecord
   def completed?
     question_responses_count == Question.count
   end
+
+  
+
 end
