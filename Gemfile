@@ -17,7 +17,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'react-rails'
 gem 'webpacker', '~> 3.0'
-
+gem 'byebug'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'factory_girl_rails'
