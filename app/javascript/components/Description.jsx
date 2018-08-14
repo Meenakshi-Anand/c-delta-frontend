@@ -16,7 +16,7 @@ class Description extends Component {
    this.setState({showAll: false});
    }
   render() {
-  
+
       const {content} = this.props;
       const {showAll} = this.state;
       if(content.length<=120) {
@@ -25,14 +25,16 @@ class Description extends Component {
       if(showAll) {
         return <div>
               {content}
-              <a onClick={()=>this.showLess()}>Read less</a>
+              <br></br>
+              <a onClick={()=>this.showLess()}>read less</a>
             </div>
       }
 
         const toShow = content.substring(0,120)+"...";
         return <div>
             {toShow}
-            <a onClick={()=>this.showMore()} >Read more</a>
+            <br></br>
+            <a onClick={()=>this.showMore()} >read more</a>
             </div>
 
   }
