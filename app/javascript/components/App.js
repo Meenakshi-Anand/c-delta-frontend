@@ -4,25 +4,35 @@ import _ from "lodash"
 class App extends Component {
  constructor(props){
    super(props);
-   this.state={qualities:this.extract()};
+   this.state={qualities:this.extract(),flag:"",ord:""};
    this.sortByName=this.sortByName.bind(this);
    this.sortByScore=this.sortByScore.bind(this);
  }
  extract(){
   var fieldValues = jQuery.parseJSON(JSON.stringify(window.qualsJSON));
   var values = Object.keys(fieldValues).map(key => fieldValues[key]);
-  console.log(values);
   return values;
  }
  sortByName(){
+   if(this.state.flag === "" || this.state.flag === "DSC" ){
    this.setState({qualities:this.extract().sort(function(a,b){
      return ((a.name < b.name) ? -1 : ((a.name > b.name) ? 1 : 0));
-   })});
+   }),flag:"ASC"});
+   }else{
+     this.setState({qualities:this.extract().sort(function(a,b){
+       return ((a.name > b.name) ? -1 : ((a.name < b.name) ? 1 : 0));
+     }),flag:"DSC"});
+   }
  }
  sortByScore(){
+   if(this.state.ord === "" || this.state.ord === "HTL"){
    this.setState({qualities:this.extract().sort(function(a,b){
       return (a.score - b.score);
-   })});
+   }),ord:"LTH"});}else{
+     this.setState({qualities:this.extract().sort(function(a,b){
+        return ( b.score - a.score);
+     }),ord:"HTL"});
+   }
  }
   render () {
     return (
