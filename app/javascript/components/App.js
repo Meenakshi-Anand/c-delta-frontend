@@ -11,15 +11,16 @@ class App extends Component {
  extract(){
   var fieldValues = jQuery.parseJSON(JSON.stringify(window.qualsJSON));
   var values = Object.keys(fieldValues).map(key => fieldValues[key]);
+  console.log(values);
+  return values;
  }
  sortByName(){
    this.setState({qualities:this.extract().sort(function(a,b){
-     return a.name - b.name
-   })})
+     return ((a.name < b.name) ? -1 : ((a.name > b.name) ? 1 : 0));
+   })});
 
  }
   render () {
-    debugger
     return (
       <div className="row">
         <div className="col-md-12">
