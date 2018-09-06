@@ -6,7 +6,7 @@ class App extends Component {
    super(props);
    this.state={qualities:this.extract()};
    this.sortByName=this.sortByName.bind(this);
-   //this.sortByScore=this.sortByScore.bind(this);
+   this.sortByScore=this.sortByScore.bind(this);
  }
  extract(){
   var fieldValues = jQuery.parseJSON(JSON.stringify(window.qualsJSON));
@@ -18,7 +18,11 @@ class App extends Component {
    this.setState({qualities:this.extract().sort(function(a,b){
      return ((a.name < b.name) ? -1 : ((a.name > b.name) ? 1 : 0));
    })});
-
+ }
+ sortByScore(){
+   this.setState({qualities:this.extract().sort(function(a,b){
+      return (a.score - b.score);
+   })});
  }
   render () {
     return (
@@ -29,7 +33,7 @@ class App extends Component {
           </h2>
             <div>
               <button onClick={()=>this.sortByName()}>Sort By Name</button>
-              <button onClick={()=>this.sortByScore}>Sort By Score</button>
+              <button onClick={()=>this.sortByScore()}>Sort By Score</button>
             </div>
             <div className="row">
               { this.state.qualities.map((obj) => {
